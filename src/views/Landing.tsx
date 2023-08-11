@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { Grid, Typography, Button } from "@mui/material";
 import { css } from "@emotion/react";
+import { useNavigate } from "react-router-dom";
 import "../css/components/landing.css";
 
 const centeredContentStyle = css`
@@ -35,6 +36,7 @@ const buttonStyle = css`
 `;
 
 const Landing = () => {
+  const navigate = useNavigate();
   return (
     <div className="landing-container">
       <Grid css={centeredContentStyle}>
@@ -56,6 +58,7 @@ const Landing = () => {
             size="large"
             color="error"
             css={buttonStyle}
+            onClick={() => navigate("/movies")}
           >
             Get Started
           </Button>

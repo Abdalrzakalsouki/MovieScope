@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -54,7 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Navbar = () => {
-  const pages = ["Products", "Pricing", "Blog"];
+  const pages = ["Home", "Movies", "About"];
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -65,12 +66,7 @@ const Navbar = () => {
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position="static"
-        color="transparent"
-        elevation={0}
-        enableColorOnDark
-      >
+      <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -103,7 +99,13 @@ const Navbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">
+                    {page === "Home" ? (
+                      <Link to="/"> {page}</Link>
+                    ) : (
+                      <Link to={page}> {page}</Link>
+                    )}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -122,7 +124,7 @@ const Navbar = () => {
               paddingInline: "2rem",
             }}
           >
-            MovieScop
+            <Link to="/">MovieScop</Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -131,7 +133,11 @@ const Navbar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {page === "Home" ? (
+                  <Link to="/"> {page}</Link>
+                ) : (
+                  <Link to={page}> {page}</Link>
+                )}
               </Button>
             ))}
           </Box>
