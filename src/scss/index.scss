@@ -1,5 +1,6 @@
 @use "./utlties/normalize";
 @use "./utlties/colors" as CO;
+@use "./utlties/typegraphy" as TO;
 @import "@fontsource/roboto/300.css";
 @import "@fontsource/roboto/400.css";
 @import "@fontsource/roboto/500.css";
@@ -38,4 +39,8 @@ h4,
 h5,
 h6 {
   text-transform: uppercase;
+}
+
+.lading-text {
+  color: CO.$primary-color;
 }
