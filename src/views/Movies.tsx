@@ -1,29 +1,52 @@
+import Navbar from "./Navbar";
 import useFetch from "../hooks/useFetch";
 import MovieItem from "../components/MovieItem";
 import { useContext } from "react";
 import { SearchContext } from "../utils/SearchContext";
-import { css } from "@emotion/react";
-import { Typography, Grid } from "@mui/material";
-
-const posterStyles = css`
-  padding: 16px;
-`;
-
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
+import "../css/components/movies.css";
 const Movies = () => {
   const searchContext = useContext(SearchContext);
-  if (searchContext) console.log(searchContext.search);
-  // const credit = import.meta.env.VITE_ACCESS_TOKEN;
-  // const pouplar = import.meta.env.VITE_POUPLAR;
-  // const topRated = import.meta.env.VITE_TOP_RATED;
-  // const upcoming = import.meta.env.VITE_UPCOMING;
+  const searchContent = searchContext?.search;
+  const credit = import.meta.env.VITE_ACCESS_TOKEN;
+  const searchEndpoint = import.meta.env.VITE_SEARCH;
+  const url = searchEndpoint + searchContext?.search;
 
-  // const { data, loading, error } = useFetch(pouplar, credit);
+  const {
+    data: searchResult,
+    loading: searchLoader,
+    error: searchError,
+  } = useFetch(url, credit);
+  const filteredSearchResult = searchResult?.results.filter((movie) => {
+    return movie.poster_path !== null;
+  });
   return (
-    <div>
-      <Typography variant="h2">Popular</Typography>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6} md={4} lg={3} css={posterStyles}></Grid>
-      </Grid>
+    <div className="movies-container">
+      <Navbar />
+      {filteredSearchResult ? (
+        <Container>
+          <Typography
+            variant="h1"
+            sx={{ fontSize: "2.5rem", paddingBlock: "2rem" }}
+          >
+            Search result for:{" "}
+            <span className="search-word">{searchContent}</span>
+          </Typography>
+          <Grid
+            container
+            spacing={{ xs: 5, sm: 7, md: 6 }}
+            columns={{ xs: 1, sm: 8, md: 12 }}
+          >
+            {filteredSearchResult.map((movie) => (
+              <MovieItem movie={movie} />
+            ))}
+          </Grid>
+        </Container>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
