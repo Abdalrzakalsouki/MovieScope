@@ -5,6 +5,7 @@ import SearchProvider from "./utils/SearchContext.tsx";
 import MovieProvider from "./utils/MovieContext.tsx";
 import Home from "./Home.tsx";
 import Movies from "./views/Movies.tsx";
+import MovieSearch from "./views/MovieSearch.tsx";
 import Movie from "./views/Movie.tsx";
 import About from "./views/About.tsx";
 import "./css/index.css";
@@ -17,6 +18,10 @@ const routes = createBrowserRouter([
   {
     path: "/movies",
     element: <Movies />,
+  },
+  {
+    path: "/movie-search",
+    element: <MovieSearch />,
   },
   {
     path: "/movie/:title/:id",

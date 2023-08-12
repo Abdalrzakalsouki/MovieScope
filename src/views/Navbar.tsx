@@ -85,7 +85,7 @@ const Navbar = () => {
       if (searchContent === "") {
         if (searchContext) searchContext.emptySearch();
       } else {
-        if (location.pathname === "/") navigate("/movies");
+        if (location.pathname === "/") navigate("/movie-search");
       }
     }
   };
