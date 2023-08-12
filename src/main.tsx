@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SearchProvider from "./utils/SearchContext.tsx";
+import MovieProvider from "./utils/MovieContext.tsx";
 import Home from "./Home.tsx";
 import Movies from "./views/Movies.tsx";
 import Movie from "./views/Movie.tsx";
@@ -18,7 +19,7 @@ const routes = createBrowserRouter([
     element: <Movies />,
   },
   {
-    path: "/movie/:title",
+    path: "/movie/:title/:id",
     element: <Movie />,
   },
   {
@@ -30,7 +31,9 @@ const routes = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <SearchProvider>
-      <RouterProvider router={routes} />
+      <MovieProvider>
+        <RouterProvider router={routes} />
+      </MovieProvider>
     </SearchProvider>
   </React.StrictMode>
 );

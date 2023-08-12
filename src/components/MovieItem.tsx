@@ -1,9 +1,14 @@
 import Grid from "@mui/material/Grid";
 import { MovieItemProps } from "../Interfaces/interface.ts";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { MovieContext } from "../utils/MovieContext.tsx";
 const MovieItem: React.FC<MovieItemProps> = ({ movie }) => {
+  const movieContext = useContext(MovieContext);
   const onMoviePosterClick = () => {
-    navigate(`/movie/${movie.title}`);
+    if (movieContext) movieContext.setMovieInfo(movie);
+
+    navigate(`/movie/${movie.title}/${movie.id}`);
   };
   const navigate = useNavigate();
   const { poster_path } = movie;

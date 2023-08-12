@@ -1,8 +1,11 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { MovieItemProps } from "../Interfaces/interface.tsx";
-
+import { useContext } from "react";
+import { MovieContext } from "../utils/MovieContext.tsx";
 const MovieDetails: React.FC<MovieItemProps> = ({ movie }) => {
+  const movieContext = useContext(MovieContext);
+  console.log(movieContext.movie);
   const {
     adult,
     genre_ids,
