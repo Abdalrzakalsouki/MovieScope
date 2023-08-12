@@ -6,7 +6,9 @@ interface SearchContextType {
   emptySearch: () => void;
 }
 
-export const SearchContext = createContext<SearchContextType | string>("");
+export const SearchContext = createContext<SearchContextType | undefined>(
+  undefined
+);
 const SearchProvider = ({ children }: { children: ReactNode }) => {
   const [search, setSearch] = useState<string>("");
 

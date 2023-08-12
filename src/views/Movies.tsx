@@ -1,5 +1,7 @@
 import useFetch from "../hooks/useFetch";
 import MovieItem from "../components/MovieItem";
+import { useContext } from "react";
+import { SearchContext } from "../utils/SearchContext";
 import { css } from "@emotion/react";
 import { Typography, Grid } from "@mui/material";
 
@@ -8,12 +10,14 @@ const posterStyles = css`
 `;
 
 const Movies = () => {
-  const credit = import.meta.env.VITE_ACCESS_TOKEN;
-  const pouplar = import.meta.env.VITE_POUPLAR;
-  const topRated = import.meta.env.VITE_TOP_RATED;
-  const upcoming = import.meta.env.VITE_UPCOMING;
+  const searchContext = useContext(SearchContext);
+  if (searchContext) console.log(searchContext.search);
+  // const credit = import.meta.env.VITE_ACCESS_TOKEN;
+  // const pouplar = import.meta.env.VITE_POUPLAR;
+  // const topRated = import.meta.env.VITE_TOP_RATED;
+  // const upcoming = import.meta.env.VITE_UPCOMING;
 
-  const { data, loading, error } = useFetch(pouplar, credit);
+  // const { data, loading, error } = useFetch(pouplar, credit);
   return (
     <div>
       <Typography variant="h2">Popular</Typography>

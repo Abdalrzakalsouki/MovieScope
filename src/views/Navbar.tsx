@@ -1,4 +1,7 @@
-import { useState } from "react";
+import React, { useState, useContext } from "react";
+import { SearchContext } from "../utils/SearchContext";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -12,7 +15,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
-
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -56,14 +58,38 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Navbar = () => {
   const pages = ["Home", "Movies", "About"];
+  const searchContext = useContext(SearchContext);
+  const location = useLocation();
+  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-
+  const [searchContent, setSearchContent] = useState<string>("");
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  const handleSearch = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const content = e.currentTarget.value;
+    if (searchContext) searchContext.updateSearch(content);
+    setSearchContent(content);
+  };
+
+  const handleEnterSearch = (
+    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    if (e.key === "Enter") {
+      if (searchContent === "") {
+        if (searchContext) searchContext.emptySearch();
+      } else {
+        if (location.pathname === "/") navigate("/movies");
+      }
+    }
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="transparent" elevation={0}>
@@ -148,6 +174,10 @@ const Navbar = () => {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
+              onChange={(e) => handleSearch(e)}
+              onKeyDown={(e) => handleEnterSearch(e)}
+              value={searchContent}
+              type="search"
             />
           </Search>
         </Toolbar>
