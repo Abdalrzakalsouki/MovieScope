@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
+
+interface ApiResponse {
+  results: object[];
+}
 const useFetch = (url: string, key: string) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<ApiResponse>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
 

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import SearchProvider from "./utils/SearchContext.tsx";
 import Home from "./Home.tsx";
 import Movies from "./views/Movies.tsx";
 import About from "./views/About.tsx";
@@ -23,6 +24,8 @@ const routes = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={routes} />
+    <SearchProvider>
+      <RouterProvider router={routes} />
+    </SearchProvider>
   </React.StrictMode>
 );

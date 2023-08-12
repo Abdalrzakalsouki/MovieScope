@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar";
+import Navbar from "./views/Navbar";
 import Landing from "./views/Landing";
 const Home = () => {
   return (
