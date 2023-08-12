@@ -1,9 +1,17 @@
 import Grid from "@mui/material/Grid";
-import { MovieItemProps } from "../Interfaces/interface.ts";
+import { Movie } from "../Interfaces/interface.ts";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { MovieContext } from "../utils/MovieContext.tsx";
-const MovieItem: React.FC<MovieItemProps> = ({ movie }) => {
+const MovieItem = ({
+  movie,
+  imageSize,
+  gridSpace,
+}: {
+  movie: Movie;
+  imageSize: string;
+  gridSpace: number[];
+}) => {
   const movieContext = useContext(MovieContext);
   const onMoviePosterClick = () => {
     if (movieContext) movieContext.setMovieInfo(movie);
@@ -13,12 +21,12 @@ const MovieItem: React.FC<MovieItemProps> = ({ movie }) => {
   const navigate = useNavigate();
   const { poster_path } = movie;
   return (
-    <Grid item xs={2} sm={4} md={4}>
+    <Grid item xs={gridSpace[0]} sm={gridSpace[1]} md={gridSpace[2]}>
       <img
         src={`https://image.tmdb.org/t/p/original/${poster_path}`}
         alt="movie poster"
         onClick={() => onMoviePosterClick()}
-        style={{ maxWidth: "300px", height: "auto", cursor: "pointer" }}
+        style={{ maxWidth: imageSize, height: "auto", cursor: "pointer" }}
       />
     </Grid>
   );

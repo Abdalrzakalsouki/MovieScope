@@ -40,7 +40,11 @@ const MovieSearch = () => {
             columns={{ xs: 1, sm: 8, md: 12 }}
           >
             {filteredSearchResult.map((movie) => (
-              <MovieItem movie={movie} />
+              <MovieItem
+                movie={movie}
+                imageSize="300px"
+                gridSpace={[2, 4, 4]}
+              />
             ))}
           </Grid>
         </Container>
