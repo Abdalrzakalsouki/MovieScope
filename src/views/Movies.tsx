@@ -22,6 +22,7 @@ const Movies = () => {
   const filteredSearchResult = searchResult?.results.filter((movie) => {
     return movie.poster_path !== null;
   });
+  console.log(searchResult);
   return (
     <div className="movies-container">
       <Navbar />

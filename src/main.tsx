@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SearchProvider from "./utils/SearchContext.tsx";
 import Home from "./Home.tsx";
 import Movies from "./views/Movies.tsx";
+import Movie from "./views/Movie.tsx";
 import About from "./views/About.tsx";
 import "./css/index.css";
 
@@ -15,6 +16,10 @@ const routes = createBrowserRouter([
   {
     path: "/movies",
     element: <Movies />,
+  },
+  {
+    path: "/movie/:id",
+    element: <Movie />,
   },
   {
     path: "/about",
