@@ -88,7 +88,7 @@ const MovieCard = ({
             css={arrowRight}
             onClick={() => handleRightArrow()}
           />
-          <Link css={viewMore} to={heading}>
+          <Link css={viewMore} to="/view-more">
             View more
           </Link>
         </>
@@ -99,8 +99,7 @@ const MovieCard = ({
           style={{ backgroundColor: theme.palette.primary.main }}
           css={buttonStyle}
         >
-          {" "}
-          View More{" "}
+          View More
         </Button>
       )}
     </Container>
