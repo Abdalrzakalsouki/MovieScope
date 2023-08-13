@@ -102,8 +102,8 @@ const Navbar = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="transparent" elevation={0}>
-        <Toolbar disableGutters>
+      <AppBar position="fixed" color="transparent" elevation={0}>
+        <Toolbar>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
