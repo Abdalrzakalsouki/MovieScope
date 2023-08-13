@@ -61,7 +61,6 @@ const MovieCard = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const endIndex = currentIndex + 4;
-  console.log(movieList);
   const movies = movieList.results.slice(currentIndex, endIndex);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));

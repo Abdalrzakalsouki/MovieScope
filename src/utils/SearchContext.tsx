@@ -8,8 +8,8 @@ interface SearchContextType {
 
 export const SearchContext = createContext<SearchContextType>({
   search: "",
-  updateSearch: () => null,
-  emptySearch: () => null,
+  updateSearch: () => {},
+  emptySearch: () => {},
 });
 const SearchProvider = ({ children }: { children: ReactNode }) => {
   const [search, setSearch] = useState<string>("");

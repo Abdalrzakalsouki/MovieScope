@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { MovieItemProps } from "../Interfaces/interface.tsx";
+import { Movie } from "../Interfaces/interface.tsx";
 import { css } from "@emotion/react";
 import Navbar from "../views/Navbar.tsx";
 
@@ -38,11 +38,11 @@ const overviewInfo = css`
   max-width: 75%;
   padding-bottom: 1rem;
 `;
-const MovieDetails: React.FC<MovieItemProps> = ({ movie }) => {
+const MovieDetails = ({ movie }: { movie: Movie }) => {
+  console.log(movie);
   return (
     <div>
       <Navbar />
-
       <div css={movieContainer}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={4}>

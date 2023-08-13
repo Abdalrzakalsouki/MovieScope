@@ -1,5 +1,4 @@
-/** @jsxImportSource @emotion/react */
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { SearchContext } from "../utils/SearchContext";
 import { useNavigate, Link } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
@@ -15,7 +14,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
-import { css } from "@emotion/react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -68,14 +66,6 @@ const StyledButton = styled(Button)(({ theme }) => ({
     color: theme.palette.primary.contrastText,
   },
 }));
-
-const link = css`
-  color: inherit;
-  text-decoration: none;
-  font-size: 15px;
-  padding-inline: 10px;
-  text-transform: capitalize;
-`;
 
 const Navbar = () => {
   const theme = useTheme();
@@ -147,11 +137,15 @@ const Navbar = () => {
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
                     {page === "Home" ? (
-                      <Link to="/" css={link} style={{ color: "black" }}>
+                      <Link to="/" className="link" style={{ color: "black" }}>
                         {page}
                       </Link>
                     ) : (
-                      <Link to={page} css={link} style={{ color: "black" }}>
+                      <Link
+                        to={page}
+                        className="link"
+                        style={{ color: "black" }}
+                      >
                         {page}
                       </Link>
                     )}
@@ -184,7 +178,7 @@ const Navbar = () => {
                 paddingInline: "2rem",
               }}
             >
-              <Link to="/" css={link}>
+              <Link to="/" className="link">
                 MovieScop
               </Link>
             </Typography>
@@ -197,11 +191,11 @@ const Navbar = () => {
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page === "Home" ? (
-                  <Link to="/" css={link}>
+                  <Link to="/" className="link">
                     {page}
                   </Link>
                 ) : (
-                  <Link to={`/${page}`} css={link}>
+                  <Link to={`/${page}`} className="link">
                     {page}
                   </Link>
                 )}

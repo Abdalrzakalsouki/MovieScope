@@ -2,9 +2,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-// import { useTheme } from "@mui/material/styles";
 const NotFound = () => {
-  //   const theme = useTheme();
   return (
     <Container>
       <Typography variant="h1">

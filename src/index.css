@@ -1,0 +1,14 @@
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  font-size: 15px;
+  padding-inline: 10px;
+  text-transform: capitalize;
+}

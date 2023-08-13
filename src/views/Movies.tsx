@@ -1,17 +1,8 @@
-/** @jsxImportSource @emotion/react */
 import Navbar from "./Navbar";
 import useFetch from "../hooks/useFetch";
 import MovieCard from "../components/MovieCard";
 import CircularProgress from "@mui/material/CircularProgress";
 import Error from "./Error";
-import { css } from "@emotion/react";
-
-const loaderStyle = css`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-`;
 
 const Movies = () => {
   const credit = import.meta.env.VITE_ACCESS_TOKEN;
@@ -59,7 +50,7 @@ const Movies = () => {
               )}
             </>
           ) : (
-            <CircularProgress css={loaderStyle} />
+            <CircularProgress className="spinner" />
           )}
         </div>
       ) : (
