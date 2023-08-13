@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
+import { MoviesResponse } from "../Interfaces/interface";
 
-interface ApiResponse {
-  results: object[];
-}
 const useFetch = (url: string, key: string) => {
-  const [data, setData] = useState<ApiResponse>();
+  const [data, setData] = useState<MoviesResponse>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
 

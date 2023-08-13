@@ -5,7 +5,7 @@ const Movie = () => {
   const movieContext = useContext(MovieContext);
   return (
     <div>
-      <MovieDetails movie={movieContext?.movie} />
+      <MovieDetails movie={movieContext.movie} />
     </div>
   );
 };

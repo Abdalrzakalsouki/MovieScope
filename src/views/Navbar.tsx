@@ -1,9 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState, useContext } from "react";
 import { SearchContext } from "../utils/SearchContext";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -83,7 +81,6 @@ const Navbar = () => {
   const theme = useTheme();
   const pages = ["Home", "Movies", "About"];
   const searchContext = useContext(SearchContext);
-  const location = useLocation();
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [searchContent, setSearchContent] = useState<string>("");

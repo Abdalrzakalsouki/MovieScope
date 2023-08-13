@@ -1,14 +1,16 @@
 import { createContext, useState, ReactNode } from "react";
 
 interface SearchContextType {
-  search: string;
+  readonly search: string;
   updateSearch: (text: string) => void;
   emptySearch: () => void;
 }
 
-export const SearchContext = createContext<SearchContextType | undefined>(
-  undefined
-);
+export const SearchContext = createContext<SearchContextType>({
+  search: "",
+  updateSearch: () => null,
+  emptySearch: () => null,
+});
 const SearchProvider = ({ children }: { children: ReactNode }) => {
   const [search, setSearch] = useState<string>("");
 

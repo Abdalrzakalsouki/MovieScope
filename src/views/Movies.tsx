@@ -40,7 +40,6 @@ const Movies = () => {
   const loader = ![popularLoader, topRatedLoader, upcomingLoader].every(
     Boolean
   );
-
   const errors = ![popularError, topRatedError, upcomingError].every(Boolean);
   return (
     <div>
@@ -50,22 +49,13 @@ const Movies = () => {
             <>
               <Navbar />
               {popular && (
-                <MovieCard
-                  heading="Popular movies"
-                  movieList={popular.results}
-                />
+                <MovieCard heading="Popular movies" movieList={popular} />
               )}
               {topRated && (
-                <MovieCard
-                  heading="Top Rated movies"
-                  movieList={topRated.results}
-                />
+                <MovieCard heading="Top Rated movies" movieList={topRated} />
               )}
               {upcoming && (
-                <MovieCard
-                  heading="Upcoming movies"
-                  movieList={upcoming.results}
-                />
+                <MovieCard heading="Upcoming movies" movieList={upcoming} />
               )}
             </>
           ) : (

@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
 import Typography from "@mui/material/Typography";
-import { Movie } from "../Interfaces/interface.ts";
+import { MoviesResponse } from "../Interfaces/interface.ts";
 import MovieItem from "../components/MovieItem";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -57,11 +57,12 @@ const MovieCard = ({
   movieList,
 }: {
   heading: string;
-  movieList: Movie;
+  movieList: MoviesResponse;
 }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const endIndex = currentIndex + 4;
-  const movies = movieList.slice(currentIndex, endIndex);
+  console.log(movieList);
+  const movies = movieList.results.slice(currentIndex, endIndex);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const handleRightArrow = () => {
