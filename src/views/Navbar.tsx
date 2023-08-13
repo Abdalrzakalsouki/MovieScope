@@ -204,7 +204,7 @@ const Navbar = () => {
                     {page}
                   </Link>
                 ) : (
-                  <Link to={page} css={link}>
+                  <Link to={`/${page}`} css={link}>
                     {page}
                   </Link>
                 )}
