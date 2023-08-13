@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
+  spacing: 8,
   palette: {
     primary: {
       main: "#db0000",
@@ -81,6 +82,18 @@ const theme = createTheme({
     overline: {
       fontSize: "0.7rem",
       textTransform: "uppercase",
+    },
+  },
+  shape: {
+    borderRadius: 10,
+  },
+  breakpoints: {
+    values: {
+      xs: 300,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
     },
   },
 });

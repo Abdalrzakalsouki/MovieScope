@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { Grid, Typography, Button } from "@mui/material";
+import { Grid, Typography, Button, useTheme } from "@mui/material";
 import { css } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
 import landingImage from "../assets/21-movies-in-2021-Title-Image2.jpg";
@@ -43,24 +43,14 @@ const centeredContentStyle = css`
 
 const h1Style = css`
   font-size: 4rem;
-  font-weight: bold;
   margin: 1rem 0;
   margin-inline: 5px;
-  max-width: 90% @media (max-width: 600px) {
-    font-size: 3rem;
-    margin: auto;
-  }
 `;
 
 const h2Style = css`
   font-size: 2rem;
   font-weight: bold;
   margin: 0.5rem 0;
-  max-width: 90%;
-  @media (max-width: 600px) {
-    font-size: 1.5rem;
-    margin: auto;
-  }
 `;
 
 const buttonStyle = css`
@@ -73,6 +63,7 @@ const buttonStyle = css`
 
 const Landing = () => {
   const navigate = useNavigate();
+  const theme = useTheme();
   return (
     <div>
       <Navbar />
@@ -91,9 +82,9 @@ const Landing = () => {
           <Grid item xs={12} textAlign="center">
             <Button
               variant="contained"
-              sx={{ backgroundColor: "#db0000" }}
+              color="primary"
               size="large"
-              color="error"
+              style={{ backgroundColor: theme.palette.primary.main }}
               css={buttonStyle}
               onClick={() => navigate("/movies")}
             >

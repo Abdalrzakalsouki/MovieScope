@@ -1,9 +1,11 @@
+/** @jsxImportSource @emotion/react */
 import React, { useState, useContext } from "react";
 import { SearchContext } from "../utils/SearchContext";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -15,16 +17,18 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
+import { css } from "@emotion/react";
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  backgroundColor: alpha(theme.palette.text.primary, 0.15),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.text.primary, 0.25),
   },
   marginLeft: 0,
   marginRight: theme.spacing(2),
-  width: "auto",
+  width: "100%",
   [theme.breakpoints.up("sm")]: {
     width: "auto",
   },
@@ -47,8 +51,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "auto",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
+    [theme.breakpoints.up("xs")]: {
+      width: "10ch",
       "&:focus": {
         width: "20ch",
       },
@@ -56,7 +60,27 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const StyledButton = styled(Button)(({ theme }) => ({
+  my: 2,
+  color: theme.palette.text.primary,
+  display: "block",
+  transition: "background-color 0.3s",
+  "&:hover": {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+  },
+}));
+
+const link = css`
+  color: inherit;
+  text-decoration: none;
+  font-size: 15px;
+  padding-inline: 10px;
+  text-transform: capitalize;
+`;
+
 const Navbar = () => {
+  const theme = useTheme();
   const pages = ["Home", "Movies", "About"];
   const searchContext = useContext(SearchContext);
   const location = useLocation();
@@ -82,11 +106,9 @@ const Navbar = () => {
     e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     if (e.key === "Enter") {
-      if (searchContent === "") {
-        if (searchContext) searchContext.emptySearch();
-      } else {
-        if (location.pathname === "/") navigate("/movie-search");
-      }
+      !searchContent
+        ? searchContext?.emptySearch?.()
+        : location.pathname === "/" && navigate("/movie-search");
       setSearchContent("");
     }
   };
@@ -128,44 +150,65 @@ const Navbar = () => {
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
                     {page === "Home" ? (
-                      <Link to="/"> {page}</Link>
+                      <Link to="/" css={link} style={{ color: "black" }}>
+                        {page}
+                      </Link>
                     ) : (
-                      <Link to={page}> {page}</Link>
+                      <Link to={page} css={link} style={{ color: "black" }}>
+                        {page}
+                      </Link>
                     )}
                   </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
+          <Box
             sx={{
-              mr: 2,
-              fontWeight: 700,
-              letterSpacing: ".2rem",
-              color: "inherit",
-              textDecoration: "none",
-              paddingInline: "2rem",
+              flexGrow: 1,
+              display: "flex",
+              alignItems: "center",
+              [theme.breakpoints.up("md")]: {
+                alignItems: "flex-start",
+              },
             }}
           >
-            <Link to="/">MovieScop</Link>
-          </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                fontWeight: 700,
+                letterSpacing: ".2rem",
+                color: "inherit",
+                textDecoration: "none",
+                paddingInline: "2rem",
+              }}
+            >
+              <Link to="/" css={link}>
+                MovieScop
+              </Link>
+            </Typography>
+          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
+              <StyledButton
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page === "Home" ? (
-                  <Link to="/"> {page}</Link>
+                  <Link to="/" css={link}>
+                    {page}
+                  </Link>
                 ) : (
-                  <Link to={page}> {page}</Link>
+                  <Link to={page} css={link}>
+                    {page}
+                  </Link>
                 )}
-              </Button>
+              </StyledButton>
             ))}
           </Box>
           <Search>
