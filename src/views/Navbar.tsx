@@ -108,7 +108,7 @@ const Navbar = () => {
     if (e.key === "Enter") {
       !searchContent
         ? searchContext?.emptySearch?.()
-        : location.pathname === "/" && navigate("/movie-search");
+        : navigate("/movie-search");
       setSearchContent("");
     }
   };
