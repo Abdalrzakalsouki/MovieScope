@@ -87,6 +87,7 @@ const Navbar = () => {
       } else {
         if (location.pathname === "/") navigate("/movie-search");
       }
+      setSearchContent("");
     }
   };
 

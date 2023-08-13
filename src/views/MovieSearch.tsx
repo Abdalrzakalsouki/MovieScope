@@ -1,12 +1,34 @@
+/** @jsxImportSource @emotion/react */
 import Navbar from "./Navbar";
 import useFetch from "../hooks/useFetch";
 import MovieItem from "../components/MovieItem";
 import { useContext } from "react";
 import { SearchContext } from "../utils/SearchContext";
+import { css } from "@emotion/react";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import "../css/components/movieSearch.css";
+
+const containerStyle = css`
+  min-height: 100vh;
+  background-color: black;
+`;
+
+const centerText = css`
+  font-size: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  @media (max-width: 600px) {
+    text-align: center;
+    font-size: 2rem;
+  }
+`;
+
+const heighlightText = css`
+  color: #db0000;
+  margin-left: 0.5rem;
+`;
+
 const MovieSearch = () => {
   const searchContext = useContext(SearchContext);
   const searchContent = searchContext?.search;
@@ -23,16 +45,13 @@ const MovieSearch = () => {
     return movie.poster_path !== null;
   });
   return (
-    <div className="movies-container">
+    <div>
       <Navbar />
       {filteredSearchResult ? (
-        <Container>
-          <Typography
-            variant="h1"
-            sx={{ fontSize: "2.5rem", paddingBlock: "2rem" }}
-          >
-            Search result for:{" "}
-            <span className="search-word">{searchContent}</span>
+        <Container css={containerStyle}>
+          <Typography variant="h1" css={centerText}>
+            Search result for:
+            <span css={heighlightText}>{searchContent}</span>
           </Typography>
           <Grid
             container
