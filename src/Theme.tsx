@@ -18,7 +18,6 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "Arial, sans-serif",
-
     h1: {
       fontSize: "2.5rem",
       fontWeight: "bold",
@@ -26,6 +25,7 @@ const theme = createTheme({
       "@media (max-width:600px)": {
         fontSize: "2rem",
       },
+      textTransform: "capitalize",
     },
     h2: {
       fontSize: "2rem",
@@ -34,34 +34,41 @@ const theme = createTheme({
       "@media (max-width:600px)": {
         fontSize: "1.8rem",
       },
+      textTransform: "capitalize",
     },
     h3: {
       fontSize: "1.75rem",
       fontWeight: "bold",
       lineHeight: 1.4,
+      textTransform: "capitalize",
     },
     h4: {
       fontSize: "1.5rem",
       fontWeight: "bold",
       lineHeight: 1.5,
+      textTransform: "capitalize",
     },
     h5: {
       fontSize: "1.25rem",
       fontWeight: "bold",
       lineHeight: 1.6,
+      textTransform: "capitalize",
     },
     h6: {
       fontSize: "1rem",
       fontWeight: "bold",
       lineHeight: 1.7,
+      textTransform: "capitalize",
     },
     subtitle1: {
       fontSize: "1rem",
       lineHeight: 1.6,
+      textTransform: "capitalize",
     },
     subtitle2: {
       fontSize: "0.9rem",
       lineHeight: 1.5,
+      textTransform: "capitalize",
     },
     body1: {
       fontSize: "1rem",
@@ -81,7 +88,7 @@ const theme = createTheme({
     },
     overline: {
       fontSize: "0.7rem",
-      textTransform: "uppercase",
+      textTransform: "capitalize",
     },
   },
   shape: {

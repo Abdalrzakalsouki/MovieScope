@@ -1,10 +1,7 @@
 import Navbar from "./Navbar";
 import useFetch from "../hooks/useFetch";
-import MovieItem from "../components/MovieItem";
 import MovieCard from "../components/MovieCard";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
+
 const Movies = () => {
   const credit = import.meta.env.VITE_ACCESS_TOKEN;
   const popularEndpoint = import.meta.env.VITE_POUPLAR;
@@ -43,10 +40,10 @@ const Movies = () => {
         <MovieCard heading="Popular movies" movieList={popular.results} />
       )}
       {topRated && (
-        <MovieCard heading="Popular movies" movieList={topRated.results} />
+        <MovieCard heading="Top Rated movies" movieList={topRated.results} />
       )}
       {upcoming && (
-        <MovieCard heading="Popular movies" movieList={upcoming.results} />
+        <MovieCard heading="Upcoming movies" movieList={upcoming.results} />
       )}
     </div>
   );
