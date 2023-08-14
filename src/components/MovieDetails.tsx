@@ -39,7 +39,6 @@ const overviewInfo = css`
   padding-bottom: 1rem;
 `;
 const MovieDetails = ({ movie }: { movie: Movie }) => {
-  console.log(movie);
   return (
     <div>
       <Navbar />

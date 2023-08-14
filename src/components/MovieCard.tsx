@@ -7,7 +7,6 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { css } from "@emotion/react";
-import { Link } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import useQueryParams from "../hooks/useQueryParams.tsx";
@@ -42,6 +41,7 @@ const viewMore = css`
   text-align: center;
   display: block;
   padding-bottom: 1rem;
+  cursor: pointer;
 `;
 
 const buttonStyle = css`
@@ -93,9 +93,9 @@ const MovieCard = ({
             css={arrowRight}
             onClick={() => handleRightArrow()}
           />
-          <Link css={viewMore} to="/view-more">
+          <p css={viewMore} onClick={goToViewMore}>
             View more
-          </Link>
+          </p>
         </>
       ) : (
         <Button

@@ -13,6 +13,7 @@ import About from "./views/About.tsx";
 import Landing from "./views/Landing.tsx";
 import NotFound from "./views/NotFound.tsx";
 import UnderDevelopment from "./views/UnderDevelopment.tsx";
+import MoreMovies from "./views/MoreMovies.tsx";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -34,6 +35,18 @@ const routes = createBrowserRouter([
   {
     path: "/movie/:title/:id",
     element: <Movie />,
+  },
+  {
+    path: "/movies/popular-movies",
+    element: <MoreMovies />,
+  },
+  {
+    path: "/movies/top-rated-movies",
+    element: <MoreMovies />,
+  },
+  {
+    path: "/movies/upcoming-movies",
+    element: <MoreMovies />,
   },
   {
     path: "/view-more",

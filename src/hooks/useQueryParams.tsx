@@ -6,7 +6,8 @@ const useQueryParams = (params: MoviesResponse, path: string) => {
   const goToView = () => {
     const strParams = JSON.stringify(params);
     const newParams = createSearchParams(strParams);
-    navigate({ pathname: path, search: `?${newParams}` });
+    const newPath = path.replace(/\s/g, "-");
+    navigate({ pathname: newPath, search: `?${newParams}` });
   };
 
   return goToView;
