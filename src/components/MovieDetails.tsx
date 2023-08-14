@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Movie } from "../Interfaces/interface.tsx";
 import { css } from "@emotion/react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import Navbar from "../views/Navbar.tsx";
 
 const movieContainer = css`
@@ -45,9 +46,10 @@ const MovieDetails = ({ movie }: { movie: Movie }) => {
       <div css={movieContainer}>
         <Grid container spacing={3} style={{ margin: "auto" }}>
           <Grid item xs={12} sm={4} style={{ paddingTop: "100px" }}>
-            <img
+            <LazyLoadImage
               src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
               alt={movie.title}
+              effect="blur"
               css={moviePoster}
             />
           </Grid>
