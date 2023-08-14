@@ -10,6 +10,7 @@ import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import useQueryParams from "../hooks/useQueryParams.tsx";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
@@ -73,6 +74,8 @@ const MovieCard = ({
   const handleLeftArrow = () => {
     if (currentIndex >= 4) setCurrentIndex(currentIndex - 4);
   };
+
+  const goToViewMore = useQueryParams(movieList, heading);
   return (
     <Container sx={{ position: "relative", marginTop: "1.5rem" }}>
       <Typography sx={{ paddingBlock: "2rem" }} variant="h2">
@@ -100,6 +103,7 @@ const MovieCard = ({
           color="primary"
           style={{ backgroundColor: theme.palette.primary.main }}
           css={buttonStyle}
+          onClick={goToViewMore}
         >
           View More
         </Button>
