@@ -16,7 +16,7 @@ const movieContainer = css`
 `;
 
 const moviePoster = css`
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
 `;
 
@@ -43,8 +43,8 @@ const MovieDetails = ({ movie }: { movie: Movie }) => {
     <div>
       <Navbar />
       <div css={movieContainer}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={4}>
+        <Grid container spacing={3} style={{ margin: "auto" }}>
+          <Grid item xs={12} sm={4} style={{ paddingTop: "100px" }}>
             <img
               src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
               alt={movie.title}
