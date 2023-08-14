@@ -5,7 +5,6 @@ import { Movie } from "../Interfaces/interface.ts";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { MovieContext } from "../utils/MovieContext.tsx";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { memo } from "react";
 
 const centerPoster = css`
@@ -48,10 +47,9 @@ const MovieItem = memo(
         md={gridSpace[2]}
         css={girdContainer}
       >
-        <LazyLoadImage
+        <img
           src={`https://image.tmdb.org/t/p/original/${poster_path}`}
           alt="movie poster"
-          effect="blur"
           onClick={() => onMoviePosterClick()}
           css={centerPoster}
           style={{ maxWidth: imageSize }}

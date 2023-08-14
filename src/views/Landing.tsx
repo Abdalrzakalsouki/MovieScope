@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material/styles";
 import { css } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
-import landingImage from "../assets/21-movies-in-2021-Title-Image2.jpg";
+import landingImage from "../assets/landing.webp";
 import Navbar from "./Navbar";
 
 const landingContainer = css`
