@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import theme from "./theme.tsx";
+import theme from "./utils/theme.tsx";
 import SearchProvider from "./utils/SearchContext.tsx";
 import MovieProvider from "./utils/MovieContext.tsx";
 import Movies from "./views/Movies.tsx";
