@@ -42,6 +42,9 @@ const viewMore = css`
   display: block;
   padding-bottom: 1rem;
   cursor: pointer;
+  &:hover {
+    color: "#ffffff";
+  }
 `;
 
 const buttonStyle = css`
@@ -51,6 +54,20 @@ const buttonStyle = css`
   padding: 1rem 2rem;
   border-radius: 10px;
   cursor: pointer;
+`;
+
+const headings = css`
+  padding-top: 100px;
+  padding-bottom: 30px;
+  text-align: center;
+`;
+
+const gridContainer = css`
+  margin: "auto";
+  text-align: center;
+  @media (max-width: 600px) {
+    place-content: center;
+  }
 `;
 
 const MovieCard = ({
@@ -78,10 +95,10 @@ const MovieCard = ({
   const goToViewMore = useQueryParams(movieList, heading);
   return (
     <Container sx={{ position: "relative", marginTop: "1.5rem" }}>
-      <Typography sx={{ paddingBlock: "2rem" }} variant="h2">
+      <Typography css={headings} variant="h2">
         {heading}
       </Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} css={gridContainer}>
         {movies.map((movie) => (
           <MovieItem movie={movie} imageSize="250px" gridSpace={[10, 6, 3]} />
         ))}

@@ -15,16 +15,6 @@ const containerStyle = css`
   min-height: 100vh;
 `;
 
-const centerText = css`
-  font-size: 3rem;
-  padding-top: 2rem;
-  padding-bottom: 3rem;
-  @media (max-width: 600px) {
-    text-align: center;
-    font-size: 2rem;
-  }
-`;
-
 const heighlightText = css`
   color: #db0000;
   margin-left: 0.5rem;
@@ -58,7 +48,7 @@ const MovieSearch = () => {
             <>
               {filteredSearchResult ? (
                 <Container css={containerStyle}>
-                  <Typography variant="h1" css={centerText}>
+                  <Typography variant="h1">
                     Search result for:
                     <span css={heighlightText}>{searchContent}</span>
                   </Typography>

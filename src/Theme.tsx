@@ -22,6 +22,8 @@ const theme = createTheme({
       fontSize: "2.5rem",
       fontWeight: "bold",
       lineHeight: 1.2,
+      paddingTop: "100px",
+      paddingBottom: "30px",
       "@media (max-width:600px)": {
         fontSize: "2rem",
       },

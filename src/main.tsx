@@ -49,7 +49,7 @@ const routes = createBrowserRouter([
     element: <MoreMovies />,
   },
   {
-    path: "/view-more",
+    path: "/new-feature",
     element: <UnderDevelopment />,
   },
   {
