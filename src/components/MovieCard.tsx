@@ -12,6 +12,7 @@ import { useTheme } from "@mui/material/styles";
 import useQueryParams from "../hooks/useQueryParams.tsx";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import { memo } from "react";
 
 const arrowLeft = css`
   position: absolute;
@@ -70,68 +71,67 @@ const gridContainer = css`
   }
 `;
 
-const MovieCard = ({
-  heading,
-  movieList,
-}: {
-  heading: string;
-  movieList: MoviesResponse;
-}) => {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const endIndex = currentIndex + 4;
-  const movies = movieList.results.slice(currentIndex, endIndex);
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("md"));
+const MovieCard = memo(
+  ({ heading, movieList }: { heading: string; movieList: MoviesResponse }) => {
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const endIndex = currentIndex + 4;
+    const movies = movieList.results.slice(currentIndex, endIndex);
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up("md"));
 
-  const handleRightArrow = () => {
-    const incress = currentIndex + 4;
-    if (incress < movieList.results.length) setCurrentIndex(incress);
-  };
+    const handleRightArrow = () => {
+      const incress = currentIndex + 4;
+      if (incress < movieList.results.length) setCurrentIndex(incress);
+    };
 
-  const handleLeftArrow = () => {
-    if (currentIndex >= 4) setCurrentIndex(currentIndex - 4);
-  };
+    const handleLeftArrow = () => {
+      if (currentIndex >= 4) setCurrentIndex(currentIndex - 4);
+    };
 
-  const goToViewMore = useQueryParams(movieList, heading);
-  return (
-    <Container sx={{ position: "relative", marginTop: "1.5rem" }}>
-      <Typography css={headings} variant="h2">
-        {heading}
-      </Typography>
-      <Grid container spacing={2} css={gridContainer}>
-        {movies.map((movie) => (
-          <MovieItem
-            key={movie.id}
-            movie={movie}
-            imageSize="250px"
-            gridSpace={[10, 6, 3]}
-          />
-        ))}
-      </Grid>
-      {matches ? (
-        <>
-          <ChevronLeftIcon css={arrowLeft} onClick={() => handleLeftArrow()} />
-          <ChevronRightIcon
-            css={arrowRight}
-            onClick={() => handleRightArrow()}
-          />
-          <p css={viewMore} onClick={goToViewMore}>
-            View more
-          </p>
-        </>
-      ) : (
-        <Button
-          variant="contained"
-          color="primary"
-          style={{ backgroundColor: theme.palette.primary.main }}
-          css={buttonStyle}
-          onClick={goToViewMore}
-        >
-          View More
-        </Button>
-      )}
-    </Container>
-  );
-};
+    const goToViewMore = useQueryParams(movieList, heading);
+    return (
+      <Container sx={{ position: "relative", marginTop: "1.5rem" }}>
+        <Typography css={headings} variant="h2">
+          {heading}
+        </Typography>
+        <Grid container spacing={2} css={gridContainer}>
+          {movies.map((movie) => (
+            <MovieItem
+              key={movie.id}
+              movie={movie}
+              imageSize="250px"
+              gridSpace={[10, 6, 3]}
+            />
+          ))}
+        </Grid>
+        {matches ? (
+          <>
+            <ChevronLeftIcon
+              css={arrowLeft}
+              onClick={() => handleLeftArrow()}
+            />
+            <ChevronRightIcon
+              css={arrowRight}
+              onClick={() => handleRightArrow()}
+            />
+            <p css={viewMore} onClick={goToViewMore}>
+              View more
+            </p>
+          </>
+        ) : (
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ backgroundColor: theme.palette.primary.main }}
+            css={buttonStyle}
+            onClick={goToViewMore}
+          >
+            View More
+          </Button>
+        )}
+      </Container>
+    );
+  }
+);
 
 export default MovieCard;

@@ -5,6 +5,7 @@ import { Movie } from "../Interfaces/interface.tsx";
 import { css } from "@emotion/react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Navbar from "../views/Navbar.tsx";
+import { memo } from "react";
 
 const movieContainer = css`
   display: flex;
@@ -39,7 +40,7 @@ const overviewInfo = css`
   max-width: 75%;
   padding-bottom: 1rem;
 `;
-const MovieDetails = ({ movie }: { movie: Movie }) => {
+const MovieDetails = memo(({ movie }: { movie: Movie }) => {
   return (
     <div>
       <Navbar />
@@ -68,6 +69,6 @@ const MovieDetails = ({ movie }: { movie: Movie }) => {
       </div>
     </div>
   );
-};
+});
 
 export default MovieDetails;
