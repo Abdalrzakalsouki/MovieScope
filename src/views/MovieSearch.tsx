@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import useFetch from "../hooks/useFetch";
 import MovieItem from "../components/MovieItem";
 import { useContext } from "react";
@@ -76,6 +77,7 @@ const MovieSearch = () => {
           )}
         </>
       )}
+      <Footer />
     </div>
   );
 };

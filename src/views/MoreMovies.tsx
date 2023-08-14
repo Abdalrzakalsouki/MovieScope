@@ -1,4 +1,5 @@
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import MovieItem from "../components/MovieItem";
 import { useSearchParams } from "react-router-dom";
 import { Movie } from "../Interfaces/interface";
@@ -49,6 +50,7 @@ const MoreMovies = () => {
           ))}
         </Grid>
       </Container>
+      <Footer />
     </div>
   );
 };

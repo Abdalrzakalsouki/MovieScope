@@ -1,4 +1,5 @@
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import useFetch from "../hooks/useFetch";
 import MovieCard from "../components/MovieCard";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -56,6 +57,7 @@ const Movies = () => {
       ) : (
         <Error />
       )}
+      <Footer />
     </div>
   );
 };
