@@ -16,3 +16,8 @@
   padding-inline: 10px;
   text-transform: capitalize;
 }
+
+.center-container {
+  text-align: "center";
+  padding-top: "5rem";
+}

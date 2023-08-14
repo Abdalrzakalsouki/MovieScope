@@ -1,15 +1,16 @@
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 const Error = () => {
   return (
-    <Container>
-      <Typography variant="h1">Sorry, Someting went wrong ): </Typography>
-      <Button>
+    <div>
+      <Navbar />
+      <Container className="center-container">
+        <Typography variant="h1">Sorry, Someting went wrong ): </Typography>
         <Link to="/">Home</Link>
-      </Button>
-    </Container>
+      </Container>
+    </div>
   );
 };
 
