@@ -64,8 +64,10 @@ const MovieCard = ({
   const movies = movieList.results.slice(currentIndex, endIndex);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
+
   const handleRightArrow = () => {
-    setCurrentIndex(currentIndex + 4);
+    const incress = currentIndex + 4;
+    if (incress < movieList.results.length) setCurrentIndex(incress);
   };
 
   const handleLeftArrow = () => {
