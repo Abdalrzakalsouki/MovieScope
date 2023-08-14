@@ -1,5 +1,6 @@
 import Navbar from "./Navbar";
-import { Typography, Container } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
 const About = () => {
   return (

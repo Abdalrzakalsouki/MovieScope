@@ -3,7 +3,9 @@ import MovieItem from "../components/MovieItem";
 import { useSearchParams } from "react-router-dom";
 import { Movie } from "../Interfaces/interface";
 import { useLocation } from "react-router-dom";
-import { Grid, Typography, Container } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
 
 const MoreMovies = () => {
   const [searchPrams] = useSearchParams();
