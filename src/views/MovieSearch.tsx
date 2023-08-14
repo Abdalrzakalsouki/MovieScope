@@ -59,6 +59,7 @@ const MovieSearch = () => {
                   >
                     {filteredSearchResult.map((movie) => (
                       <MovieItem
+                        key={movie.id}
                         movie={movie}
                         imageSize="300px"
                         gridSpace={[2, 4, 4]}

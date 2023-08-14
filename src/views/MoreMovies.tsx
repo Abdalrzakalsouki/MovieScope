@@ -38,7 +38,12 @@ const MoreMovies = () => {
           sx={{ margin: "auto" }}
         >
           {movies.results.map((movie: Movie) => (
-            <MovieItem movie={movie} imageSize="300px" gridSpace={[2, 2, 4]} />
+            <MovieItem
+              key={movie.id}
+              movie={movie}
+              imageSize="300px"
+              gridSpace={[2, 2, 4]}
+            />
           ))}
         </Grid>
       </Container>

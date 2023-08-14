@@ -100,7 +100,12 @@ const MovieCard = ({
       </Typography>
       <Grid container spacing={2} css={gridContainer}>
         {movies.map((movie) => (
-          <MovieItem movie={movie} imageSize="250px" gridSpace={[10, 6, 3]} />
+          <MovieItem
+            key={movie.id}
+            movie={movie}
+            imageSize="250px"
+            gridSpace={[10, 6, 3]}
+          />
         ))}
       </Grid>
       {matches ? (
