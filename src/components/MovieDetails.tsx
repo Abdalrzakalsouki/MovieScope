@@ -19,6 +19,8 @@ const movieContainer = css`
 const moviePoster = css`
   max-width: 90%;
   height: auto;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 `;
 
 const infoContainer = css`
@@ -39,6 +41,7 @@ const overviewInfo = css`
   max-width: 75%;
   padding-bottom: 1rem;
 `;
+
 const MovieDetails = memo(({ movie }: { movie: Movie }) => {
   return (
     <div>

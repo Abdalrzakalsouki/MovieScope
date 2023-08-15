@@ -14,6 +14,13 @@ const centerPoster = css`
     display: block;
     margin: auto;
   }
+  transform: scale(1);
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.5, 1);
+  will-change: transform;
+  &:hover {
+    transform: scale(1.2);
+    transition: transform 1s cubic-bezier(0.2, 0.7, 0.5, 1);
+  }
 `;
 
 const slideTransition = css`
@@ -47,7 +54,6 @@ const MovieItem = ({
   const movieContext = useContext(MovieContext);
   const onMoviePosterClick = () => {
     if (movieContext) movieContext.setMovieInfo(movie);
-
     navigate(`/movie/${movie.title}/${movie.id}`);
   };
   const navigate = useNavigate();
