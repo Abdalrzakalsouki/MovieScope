@@ -34,3 +34,35 @@ a {
   text-decoration: none;
   padding: 10px;
 }
+
+.view-more {
+  color: #db0000;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  padding-bottom: 1rem;
+  cursor: pointer;
+}
+
+.view-more:hover {
+  color: white;
+}
+
+.arrows {
+  position: absolute;
+  content: "";
+  top: 50%;
+  font-size: 60px !important;
+  color: #db0000;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  outline: none;
+}
+
+.arrow-left {
+  left: 25px;
+}
+
+.arrow-right {
+  right: -32px;
+}

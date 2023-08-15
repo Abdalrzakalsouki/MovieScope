@@ -14,40 +14,6 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { memo } from "react";
 
-const arrowLeft = css`
-  position: absolute;
-  content: "";
-  top: 50%;
-  font-size: 60px;
-  color: #db0000;
-  transform: translate(-50%, -50%);
-  left: 13px;
-  cursor: pointer;
-`;
-
-const arrowRight = css`
-  position: absolute;
-  content: "";
-  top: 50%;
-  font-size: 60px;
-  color: #db0000;
-  transform: translate(-50%, -50%);
-  right: 0;
-  cursor: pointer;
-`;
-
-const viewMore = css`
-  color: #db0000;
-  text-decoration: none;
-  text-align: center;
-  display: block;
-  padding-bottom: 1rem;
-  cursor: pointer;
-  &:hover {
-    color: "#ffffff";
-  }
-`;
-
 const buttonStyle = css`
   display: block;
   margin: auto;
@@ -74,18 +40,30 @@ const gridContainer = css`
 const MovieCard = memo(
   ({ heading, movieList }: { heading: string; movieList: MoviesResponse }) => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [isClickAllowed, setIsClickAllowed] = useState<boolean>(true);
     const endIndex = currentIndex + 4;
     const movies = movieList.results.slice(currentIndex, endIndex);
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.up("md"));
 
     const handleRightArrow = () => {
-      const incress = currentIndex + 4;
-      if (incress < movieList.results.length) setCurrentIndex(incress);
+      if (isClickAllowed) {
+        const incress = currentIndex + 4;
+        if (incress < movieList.results.length) setCurrentIndex(incress);
+        setIsClickAllowed(false);
+        setTimeout(() => {
+          setIsClickAllowed(true);
+        }, 500);
+      }
     };
-
     const handleLeftArrow = () => {
-      if (currentIndex >= 4) setCurrentIndex(currentIndex - 4);
+      if (isClickAllowed) {
+        if (currentIndex >= 4) setCurrentIndex(currentIndex - 4);
+        setIsClickAllowed(false);
+        setTimeout(() => {
+          setIsClickAllowed(true);
+        }, 500);
+      }
     };
 
     const goToViewMore = useQueryParams(movieList, heading);
@@ -107,14 +85,14 @@ const MovieCard = memo(
         {matches ? (
           <>
             <ChevronLeftIcon
-              css={arrowLeft}
+              className="arrows arrow-left"
               onClick={() => handleLeftArrow()}
             />
             <ChevronRightIcon
-              css={arrowRight}
+              className="arrows arrow-right"
               onClick={() => handleRightArrow()}
             />
-            <p css={viewMore} onClick={goToViewMore}>
+            <p className="view-more" onClick={goToViewMore}>
               View more
             </p>
           </>

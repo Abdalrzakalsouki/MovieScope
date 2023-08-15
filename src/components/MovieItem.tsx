@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
+import { useState } from "react";
 import { css } from "@emotion/react";
 import Grid from "@mui/material/Grid";
 import { Movie } from "../Interfaces/interface.ts";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { MovieContext } from "../utils/MovieContext.tsx";
-import { memo } from "react";
 
 const centerPoster = css`
   height: auto;
@@ -16,48 +16,67 @@ const centerPoster = css`
   }
 `;
 
+const slideTransition = css`
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+`;
+
+const imageContainer = css`
+  position: relative;
+  overflow: hidden;
+`;
+
 const girdContainer = css`
   margin-top: 0.5rem;
   margin-bottom: 2rem;
 `;
 
-const MovieItem = memo(
-  ({
-    movie,
-    imageSize,
-    gridSpace,
-  }: {
-    movie: Movie;
-    imageSize: string;
-    gridSpace: number[];
-  }) => {
-    const movieContext = useContext(MovieContext);
-    const onMoviePosterClick = () => {
-      if (movieContext) movieContext.setMovieInfo(movie);
+const activeSlide = css`
+  opacity: 1;
+`;
 
-      navigate(`/movie/${movie.title}/${movie.id}`);
-    };
-    const navigate = useNavigate();
-    const { poster_path } = movie;
-    return (
-      <Grid
-        item
-        xs={gridSpace[0]}
-        sm={gridSpace[1]}
-        md={gridSpace[2]}
-        css={girdContainer}
-      >
+const MovieItem = ({
+  movie,
+  imageSize,
+  gridSpace,
+}: {
+  movie: Movie;
+  imageSize: string;
+  gridSpace: number[];
+}) => {
+  const movieContext = useContext(MovieContext);
+  const onMoviePosterClick = () => {
+    if (movieContext) movieContext.setMovieInfo(movie);
+
+    navigate(`/movie/${movie.title}/${movie.id}`);
+  };
+  const navigate = useNavigate();
+  const [active, setActive] = useState<boolean>(false);
+  const { poster_path } = movie;
+  const handleImageLoad = () => {
+    setActive(true);
+  };
+  return (
+    <Grid
+      item
+      xs={gridSpace[0]}
+      sm={gridSpace[1]}
+      md={gridSpace[2]}
+      css={girdContainer}
+    >
+      <div css={imageContainer}>
         <img
           src={`https://image.tmdb.org/t/p/original/${poster_path}`}
           alt="movie poster"
-          onClick={() => onMoviePosterClick()}
-          css={centerPoster}
+          onClick={onMoviePosterClick}
+          css={[centerPoster, slideTransition, active && activeSlide]}
           style={{ maxWidth: imageSize }}
+          onLoad={handleImageLoad}
         />
         <img />
-      </Grid>
-    );
-  }
-);
+      </div>
+    </Grid>
+  );
+};
 
 export default MovieItem;
