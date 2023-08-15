@@ -5,6 +5,9 @@ import { Movie } from "../Interfaces/interface.tsx";
 import { css } from "@emotion/react";
 import Navbar from "../views/Navbar.tsx";
 import { memo } from "react";
+import Container from "@mui/material/Container";
+import StarIcon from "@mui/icons-material/Star";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 
 const movieContainer = css`
   display: flex;
@@ -21,6 +24,7 @@ const moviePoster = css`
   height: auto;
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
+  border-radius: 20px;
 `;
 
 const infoContainer = css`
@@ -40,6 +44,8 @@ const title = css`
 const overviewInfo = css`
   max-width: 75%;
   padding-bottom: 1rem;
+  text-align: justify;
+  padding-bottom: 2rem;
 `;
 
 const MovieDetails = memo(({ movie }: { movie: Movie }) => {
@@ -60,11 +66,28 @@ const MovieDetails = memo(({ movie }: { movie: Movie }) => {
               {movie.title}
             </Typography>
             <Typography css={overviewInfo}>{movie.overview}</Typography>
-            <Typography>Adult: {movie.adult ? "Yes" : "No"}</Typography>
-            <Typography>Language: {movie.original_language}</Typography>
-            <Typography>Release Date: {movie.release_date}</Typography>
-            <Typography>Popularity: {movie.popularity}</Typography>
-            <Typography>Rating: {movie.vote_average}</Typography>
+            <Container>
+              <div className="info-box">
+                <Typography className="info-box-text">
+                  Adult: {movie.adult ? "Yes" : "No"}
+                </Typography>
+                <Typography className="info-box-text">
+                  Language: {movie.original_language}
+                </Typography>
+                <Typography className="info-box-text">
+                  Release Date: {movie.release_date}
+                </Typography>
+              </div>
+              <div className="rating-popularity">
+                <Typography className="info-block popularity">
+                  <AutoAwesomeIcon /> {movie.popularity}
+                </Typography>
+                <Typography className="info-block rating">
+                  <StarIcon />
+                  {movie.vote_average}
+                </Typography>
+              </div>
+            </Container>
           </Grid>
         </Grid>
       </div>
