@@ -14,6 +14,7 @@ import Landing from "./views/Landing.tsx";
 import NotFound from "./views/NotFound.tsx";
 import UnderDevelopment from "./views/UnderDevelopment.tsx";
 import MoreMovies from "./views/MoreMovies.tsx";
+import Error from "./views/Error.tsx";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -23,38 +24,47 @@ const routes = createBrowserRouter([
   {
     path: "/",
     element: <Landing />,
+    errorElement: <Error />,
   },
   {
     path: "/movies",
     element: <Movies />,
+    errorElement: <Error />,
   },
   {
     path: "/movie-search",
     element: <MovieSearch />,
+    errorElement: <Error />,
   },
   {
     path: "/movie/:title/:id",
     element: <Movie />,
+    errorElement: <Error />,
   },
   {
     path: "/movies/popular-movies",
     element: <MoreMovies />,
+    errorElement: <Error />,
   },
   {
     path: "/movies/top-rated-movies",
     element: <MoreMovies />,
+    errorElement: <Error />,
   },
   {
     path: "/movies/upcoming-movies",
     element: <MoreMovies />,
+    errorElement: <Error />,
   },
   {
     path: "/new-feature",
     element: <UnderDevelopment />,
+    errorElement: <Error />,
   },
   {
     path: "/about",
     element: <About />,
+    errorElement: <Error />,
   },
   {
     path: "*",

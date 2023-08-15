@@ -31,11 +31,11 @@ npm run dev
 
 ## Usage
 
-![UTrack](./public/MovieScope.png)
+![MovieScope](./public/MovieScope.png)
 
 ## url
 
-Live Site URL: ()
+Live Site URL: (https://moviescope-chi.vercel.app)
 
 ## Technologies
 
@@ -43,6 +43,7 @@ Live Site URL: ()
 - TypeScript
 - Matrial ui
 - REST API
+- Emotion
 - CSS3
 - NPM Libraries
 
