@@ -53,8 +53,8 @@ const MovieDetails = memo(({ movie }: { movie: Movie }) => {
     <div>
       <Navbar />
       <div css={movieContainer}>
-        <Grid container spacing={3} style={{ margin: "auto" }}>
-          <Grid item xs={12} sm={4} style={{ paddingTop: "100px" }}>
+        <Grid container style={{ margin: "auto" }}>
+          <Grid item xs={12} sm={8} md={4} style={{ paddingTop: "100px" }}>
             <img
               src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
               alt={movie.title}
