@@ -1,17 +1,27 @@
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
+
 const NotFound = () => {
+  const navigate = useNavigate();
+  const theme = useTheme();
   return (
-    <Container>
+    <div className="center-container">
       <Typography variant="h1">
-        404 | <Typography>Sorry this page is not existing</Typography>
+        <span className="keyword">404</span> ):
+        <Typography>Sorry this page is not existing</Typography>
       </Typography>
-      <Button>
-        <Link to="/">Home</Link>
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        style={{ backgroundColor: theme.palette.primary.main }}
+        onClick={() => navigate("/")}
+      >
+        Home
       </Button>
-    </Container>
+    </div>
   );
 };
 export default NotFound;
