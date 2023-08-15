@@ -35,6 +35,10 @@ const MovieSearch = () => {
   const filteredSearchResult = searchResult?.results.filter((movie) => {
     return movie.poster_path !== null;
   });
+  const searchData =
+    filteredSearchResult != undefined && filteredSearchResult?.length > 0
+      ? true
+      : false;
   return (
     <div>
       <Navbar />
@@ -46,7 +50,7 @@ const MovieSearch = () => {
             <CircularProgress className="spinner" />
           ) : (
             <>
-              {filteredSearchResult ? (
+              {searchData && filteredSearchResult ? (
                 <Container css={containerStyle}>
                   <Typography variant="h1">
                     Search result for:
@@ -68,8 +72,12 @@ const MovieSearch = () => {
                   </Grid>
                 </Container>
               ) : (
-                <Typography variant="h1">
-                  Sorry, we could not find your movie ):
+                <Typography
+                  variant="h1"
+                  sx={{ textAlign: "center", paddingTop: "12rem" }}
+                >
+                  Sorry, we could not find your movie{" "}
+                  <span className="keyword">):</span>
                 </Typography>
               )}
             </>
