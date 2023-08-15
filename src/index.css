@@ -111,3 +111,7 @@ a {
   padding-block: 2px;
   font-weight: bold;
 }
+
+.keyword {
+  color: #db0000;
+}

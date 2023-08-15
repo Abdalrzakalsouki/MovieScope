@@ -62,6 +62,9 @@ const buttonStyle = css`
   border-radius: 10px;
   cursor: pointer;
   margin-top: 2rem;
+  &:hover {
+    background-color: red !important;
+  }
 `;
 
 const Landing = () => {
@@ -74,7 +77,8 @@ const Landing = () => {
         <Grid css={centeredContentStyle}>
           <Grid item xs={12} textAlign="center">
             <Typography variant="h1" css={h1Style}>
-              Your Own perfect place, your perfect movie night
+              Your <span className="keyword">Own</span> perfect place, your
+              perfect <span className="keyword">movie</span> night
             </Typography>
           </Grid>
           <Grid item xs={12} textAlign="center">
