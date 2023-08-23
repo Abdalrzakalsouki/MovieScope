@@ -67,6 +67,13 @@ const textInfoSpan = css`
   margin-left: 10px;
 `;
 const MovieDetails = memo(({ movie }: { movie: Movie }) => {
+  const parsedDate = new Date(movie.release_date);
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const formatedDate = parsedDate.toLocaleDateString(undefined, options);
   return (
     <div>
       <Navbar />
@@ -91,7 +98,7 @@ const MovieDetails = memo(({ movie }: { movie: Movie }) => {
             <div>
               <Typography css={textInfoBox}>
                 <CalendarTodayIcon />
-                <span css={textInfoSpan}>{movie.release_date}</span>
+                <span css={textInfoSpan}>{formatedDate}</span>
               </Typography>
               <Typography css={textInfoBox}>
                 <StarIcon sx={{ color: "gold" }} />
