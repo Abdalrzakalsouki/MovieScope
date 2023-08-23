@@ -115,3 +115,11 @@ a {
 .keyword {
   color: #db0000;
 }
+
+.position-abs {
+  position: absolute;
+  content: "";
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+}
