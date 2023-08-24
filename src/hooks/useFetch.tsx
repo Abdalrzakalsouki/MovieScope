@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { MoviesResponse } from "../Interfaces/interface";
+import { MoviesResponse, Credits } from "../Interfaces/interface";
+
+type MediaData = MoviesResponse | Credits;
 
 const useFetch = (url: string, key: string) => {
-  const [data, setData] = useState<MoviesResponse>();
+  const [data, setData] = useState<MediaData | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
 
