@@ -49,15 +49,25 @@ Live Site URL: (https://moviescope-chi.vercel.app)
 
 ## Development
 
+Under development:
+
+- Improve the UI structure
+- Fix images size
+- Add basic info on poster
+- Add hover box info
+- Add search auto complete
+- Improve the Navbar and Footer
+- Improve Performance
+- Improve style structure
+
 Upcoming featuers:
 
 - Support series
 - Improve UI (animation)
-- Improve Performance
 - Add search filter
 - Add recommendations
 - Add related movies
-- Account, wishlist, comment, leave raiting
+- Account, wishlist, comment, leave rating
 
 ## author
 
