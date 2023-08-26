@@ -3,6 +3,7 @@ import useFetch from "../hooks/useFetch";
 import MovieCard from "../components/MovieCard";
 import CircularProgress from "@mui/material/CircularProgress";
 import Error from "./Error";
+import { MoviesResponse } from "../Interfaces/interface";
 
 const Movies = () => {
   const credit = import.meta.env.VITE_ACCESS_TOKEN;
@@ -14,19 +15,19 @@ const Movies = () => {
     data: popular,
     loading: popularLoader,
     error: popularError,
-  } = useFetch(popularEndpoint, credit);
+  } = useFetch<MoviesResponse>(popularEndpoint, credit);
 
   const {
     data: topRated,
     loading: topRatedLoader,
     error: topRatedError,
-  } = useFetch(topRatedEnpoint, credit);
+  } = useFetch<MoviesResponse>(topRatedEnpoint, credit);
 
   const {
     data: upcoming,
     loading: upcomingLoader,
     error: upcomingError,
-  } = useFetch(upcomingEndpoint, credit);
+  } = useFetch<MoviesResponse>(upcomingEndpoint, credit);
 
   const loader = ![popularLoader, topRatedLoader, upcomingLoader].every(
     Boolean

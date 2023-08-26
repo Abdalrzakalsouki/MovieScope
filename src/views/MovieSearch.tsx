@@ -10,6 +10,7 @@ import Error from "./Error";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
+import { MoviesResponse } from "../Interfaces/interface";
 
 const containerStyle = css`
   min-height: 100vh;
@@ -31,7 +32,7 @@ const MovieSearch = () => {
     data: searchResult,
     loading: searchLoader,
     error: searchError,
-  } = useFetch(url, credit);
+  } = useFetch<MoviesResponse>(url, credit);
   const filteredSearchResult = searchResult?.results.filter((movie) => {
     return movie.poster_path !== null;
   });

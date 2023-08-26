@@ -30,9 +30,9 @@ export interface MoviesPage {
 }
 
 export interface Credits {
-  cast: Cast;
-  crew: Crew;
-  id: number;
+  cast: Cast[];
+  crew: Crew[];
+  id?: number;
 }
 
 export interface Cast {
